@@ -1,100 +1,112 @@
-CLINIQUE VÉTÉRINAIRE API PLATFORM (Version courte)
+# CLINIQUE VÉTÉRINAIRE API PLATFORM
 
-DESCRIPTION GLOBALE
+## DESCRIPTION GLOBALE
 
-API Symfony/API Platform gérant les rendez-vous, les traitements, les animaux, les clients et le personnel (directeur, vétérinaires, assistants).
+API Symfony/API Platform gérant les rendez-vous, traitements, animaux, clients et personnel (directeur, vétérinaires, assistants).
 
-TECHNOLOGIES
+## TECHNOLOGIES
 
-PHP 8.0+
+- PHP 8.0+
+- Symfony 5/6, API Platform, Doctrine ORM
+- LexikJWTAuthenticationBundle (JWT)
+- VichUploaderBundle (optionnel, upload de fichiers)
 
-Symfony 5/6, API Platform, Doctrine ORM
+## PRÉREQUIS
 
-LexikJWTAuthenticationBundle (gestion JWT)
+- PHP >= 8.0
+- Composer
+- Base de données (MySQL, PostgreSQL, etc.)
+- OpenSSL (pour JWT)
+- Symfony CLI (optionnel)
 
-VichUploaderBundle (optionnel, pour l’upload de fichiers)
+## INSTALLATION / CONFIGURATION
 
-PRÉREQUIS
+```bash
+git clone https://github.com/mon-repo/clinique-veterinaire-api.git
+cd clinique-veterinaire-api
 
-PHP >= 8.0
+composer install
+```
 
-Composer
+Configurer la base (`.env.local`) :
 
-Base de données (MySQL, PostgreSQL, etc.)
+```env
+DATABASE_URL="mysql://user:password@127.0.0.1:3306/nom_de_la_base"
 
-OpenSSL (pour clés JWT)
-
-(Optionnel) Symfony CLI
-
-INSTALLATION / CONFIGURATION
-
-Cloner le dépôt : git clone https://github.com/mon-repo/clinique-veterinaire-api.git cd clinique-veterinaire-api
-
-Installer les dépendances : composer install
-
-Configurer la base de données (fichier .env.local), exemple : DATABASE_URL="mysql://user:password@127.0.0.1:3306/nom_de_la_base"
-
-Configurer JWT dans .env.local : 
-JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem 
-JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem 
+JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
+JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
 JWT_PASSPHRASE=MaPassphrase
+```
 
-Générer les clés JWT : php bin/console lexik:jwt:generate-keypair
+Générer clés JWT :
+```bash
+php bin/console lexik:jwt:generate-keypair
+```
 
-Mettre à jour la base : php bin/console doctrine:migrations:migrate (ou php bin/console doctrine:schema:update --force)
+Migrations base de données :
+```bash
+php bin/console doctrine:migrations:migrate
+# ou
+php bin/console doctrine:schema:update --force
+```
 
-CHARGEMENT DE FIXTURES (optionnel) php bin/console doctrine:fixtures:load --purge-with-truncate
+Fixtures (optionnel) :
+```bash
+php bin/console doctrine:fixtures:load --purge-with-truncate
+```
 
-LANCER L’APPLICATION 
-symfony server:start (ou php -S 127.0.0.1:8000 -t public/)
+## LANCER L’APPLICATION
 
-L’API est accessible sur http://127.0.0.1:8000/api 
-La documentation Swagger (interactive) est aussi disponible à /api
+```bash
+symfony server:start
+# ou
+php -S 127.0.0.1:8000 -t public/
+```
 
-AUTHENTIFICATION (JWT)
+API accessible sur : [http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)  
+Documentation Swagger interactive : `/api`
 
-Obtenir un token : POST /api/auth 
-Exemple de payload : { "email": "director@example.com", "password": "password" }
+## AUTHENTIFICATION (JWT)
 
-Utiliser le token dans chaque requête : Authorization: Bearer <token>
+Obtenir token : `POST /api/auth`
 
-IMPORT DES REQUÊTES POSTMAN 
+Payload exemple :
+```json
+{"email": "director@example.com", "password": "password"}
+```
 
-Utiliser le fichier de l'export de mes requêtes POSTMAN pour tester l'application, voici le chemin : 
+Ajouter token à chaque requête :
+```
+Authorization: Bearer <token>
+```
+
+## IMPORT DES REQUÊTES POSTMAN
+
+Fichier collection Postman :
+```
 rendu-api/export-postman/rendu-api.postman_collection.json
+```
 
-ROLES ET FONCTIONNALITÉS
+## RÔLES ET FONCTIONNALITÉS
 
-Directeur : gère le personnel (création, liste, suppression)
+- **Directeur** : gère personnel (création, liste, suppression)
+- **Vétérinaires** : consultent/s'attribuent rendez-vous, gèrent traitements
+- **Assistants** : gèrent rendez-vous, paiement, fiches animaux
+- **Clients** : accès public (non authentifié si défini)
 
-Vétérinaires : peuvent consulter/s’attribuer des rendez-vous, gérer les traitements
+## POINTS CLÉS DE L’API
 
-Assistants : créent/modifient rendez-vous, enregistrent paiement, créent fiches animal
+- `POST /api/rendez_vouses` (Créer rendez-vous)
+- `PATCH /api/rendez_vouses/{id}` (Mise à jour)
+- `GET /api/rendez_vouses/{id}` (Détail)
+- `GET /api/rendez_vouses` (Liste filtrable par date)
+- `POST /api/users` (Créer personnel, directeur)
+- `GET /api/users` (Liste personnel, directeur)
+- `PATCH /api/users/{id}` (Mise à jour)
+- `DELETE /api/users/{id}` (Suppression)
 
-Clients : utilisateurs non authentifiés (accès public si défini)
+## TEST AVEC POSTMAN
 
-POINTS CLÉS DE L’API
-
-POST /api/rendez_vouses (Créer rendez-vous)
-
-PATCH /api/rendez_vouses/{id} (Mettre à jour)
-
-GET /api/rendez_vouses/{id} (Détail)
-
-GET /api/rendez_vouses (Filtrable sur la date)
-
-POST /api/users (Créer personnel, rôle directeur)
-
-GET /api/users (Liste, rôle directeur)
-
-PATCH /api/users/{id} (Mise à jour)
-
-DELETE /api/users/{id} (Suppression)
-
-TEST AVEC POSTMAN
-
-Faire POST /api/auth (payload avec email/password)
-
-Récupérer token, l'ajouter à "Authorization: Bearer <token>" dans chaque requête
-
-Pour PATCH, utiliser "Content-Type: application/merge-patch+json"
+- Faire `POST /api/auth` (payload email/password)
+- Ajouter token reçu dans `Authorization: Bearer <token>` à chaque requête
+- Pour `PATCH`, utiliser `Content-Type: application/merge-patch+json`
