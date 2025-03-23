@@ -28,7 +28,7 @@ cd rendu-api
 composer install
 ```
 
-Configurer la base (`.env.local`) :
+Configurer la base (`.env`) :
 
 ```env
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/nom_de_la_base"
