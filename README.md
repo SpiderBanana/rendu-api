@@ -1,6 +1,6 @@
 # CLINIQUE VÉTÉRINAIRE API PLATFORM
 
-# MEMBRE DU GROUPE
+## MEMBRE DU GROUPE
 
 Antoine Huynh (j'ai réalisé ce projet seul)
 
