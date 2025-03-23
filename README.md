@@ -1,5 +1,9 @@
 # CLINIQUE VÉTÉRINAIRE API PLATFORM
 
+# MEMBRE DU GROUPE
+
+Antoine Huynh (j'ai réalisé ce projet seul)
+
 ## DESCRIPTION GLOBALE
 
 API Symfony/API Platform gérant les rendez-vous, traitements, animaux, clients et personnel (directeur, vétérinaires, assistants).
