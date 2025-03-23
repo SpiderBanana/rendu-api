@@ -23,7 +23,7 @@ API Symfony/API Platform gérant les rendez-vous, traitements, animaux, clients 
 
 ```bash
 git clone https://github.com/SpiderBanana/rendu-api.git
-cd clinique-veterinaire-api
+cd rendu-api
 
 composer install
 ```
