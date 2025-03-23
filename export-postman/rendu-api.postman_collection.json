@@ -1,0 +1,946 @@
+{
+	"info": {
+		"_postman_id": "c443421c-6b96-4a4a-80cb-db742cfb877e",
+		"name": "rendu-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43361763"
+	},
+	"item": [
+		{
+			"name": "enregistrer un nouveau rendez-vous",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjAwMjMsImV4cCI6MTc0Mjc2MzYyMywicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZXhhbXBsZS5jb20ifQ.cPyEQsb68BKTWSFR7M-vRAbok76gjbdM7-DHnIVyY9RL6LRZL-zrqM2ds9tEXz3MiJj9_gK53azAw0Ti1PqLcyNkmZqDXF8Oj3IUEFicEnkAj8Zc_vRoQo9Fk_4gOVZQcG8HoBC7-mN0JzUsuLDsRP36WfaoYOuQgve_SZqbAxCFDEnwIVblXAp2c1MJToT-1uTXDtosyDo0GAabeLo9fLPyqJvQ5Etlxrgctq07OYJhYGVQGDT8BzjJjfGdr8Jg-FBgTzu97B_Dav08pFYleQraZimbKsntEPjmgDi9IBvVNg0f42Tr3E11wHJAWicEZZu4kYAD-GCrGCyRP8b9IA",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"dateRdv\": \"2023-12-31T14:00:00+00:00\",\r\n  \"motif\": \"Consultation annuelle\",\r\n  \"animal\": \"/api/animals/1\",\r\n  \"assistant\": \"/api/users/2\",\r\n  \"veterinaire\": \"/api/users/3\",\r\n  \"statut\": \"programmé\",\r\n  \"traitements\": []\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/rendez_vouses",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rendez_vouses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "créer une fiche animal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjAwMjMsImV4cCI6MTc0Mjc2MzYyMywicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZXhhbXBsZS5jb20ifQ.cPyEQsb68BKTWSFR7M-vRAbok76gjbdM7-DHnIVyY9RL6LRZL-zrqM2ds9tEXz3MiJj9_gK53azAw0Ti1PqLcyNkmZqDXF8Oj3IUEFicEnkAj8Zc_vRoQo9Fk_4gOVZQcG8HoBC7-mN0JzUsuLDsRP36WfaoYOuQgve_SZqbAxCFDEnwIVblXAp2c1MJToT-1uTXDtosyDo0GAabeLo9fLPyqJvQ5Etlxrgctq07OYJhYGVQGDT8BzjJjfGdr8Jg-FBgTzu97B_Dav08pFYleQraZimbKsntEPjmgDi9IBvVNg0f42Tr3E11wHJAWicEZZu4kYAD-GCrGCyRP8b9IA",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nom\": \"Rex\",\r\n  \"espece\": \"Chien\",\r\n  \"dateNaissance\": \"2020-01-01\",\r\n  \"proprietaire\": \"/api/clients/1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/animals",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"animals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "connexion en tant que directeur",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"director@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/login_check",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "connexion en tant qu'assisant",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"assistant@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/login_check",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "connexion en tant que vérérinaire",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"veterinarian@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/login_check",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "voir la liste des rendez-vous",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/rendez_vouses",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rendez_vouses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "s'attribuer un rendez-vous",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"veterinaire\": \"/api/users/6\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/rendez_vouses/2",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rendez_vouses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "voir le détail d'un rendez-vous",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/rendez_vouses/2",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rendez_vouses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modifier le statut d'un rendez-vous",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"statut\": \"en cours\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/rendez_vouses/2",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rendez_vouses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "créer un traitement",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nom\": \"Vaccination\",\r\n  \"description\": \"Vaccination annuelle contre la rage\",\r\n  \"prix\": 50.0,\r\n  \"duree\": 15\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/traitements",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"traitements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modifier un traitement",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prix\": 55.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/traitements/2",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"traitements",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "supprimer un traitement",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prix\": 55.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/traitements/2",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"traitements",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lister les traitements disponibles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prix\": 55.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/traitements",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"traitements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "afficher le détail d'un traitement",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjEzNDMsImV4cCI6MTc0Mjc2NDk0Mywicm9sZXMiOlsiUk9MRV9WRVRFUklOQVJJQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ2ZXRlcmluYXJpYW5AZXhhbXBsZS5jb20ifQ.JOQ-g_9XPxSIbo7UDbi1dFfDHZXI7rgu30h4il6drP58HMFz0V6mqZ8R9MjVYyAMhxc2hzCmNVc_IPIcQS46TAa7DRu2q_vPSOTmjyPl9cRNmuXDKz9CUIgmNZdPjgIsrL9XRuvHdF9WPsF262JgyS1XnrR1bpVoCOlhUw1E1RE8qFJ7uJDJ3DR4IhYRoGH0L4rNGChILZFdjov8koJWd3PBb3INAMWoyv3708qragrD8H9Hxun1IJGvyOS7Qz5FmFOW1wFL6dbWnZEeJmn2PvDSFNTnSV7Xbe1cJZasq4Bg94_nTCoCpg4tIkY-gHkOKxYmLKzL6G5_lAUSIsrYBg",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prix\": 55.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/traitements/1",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"traitements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mettre à jour les informations d'un rendez-vous non terminé",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjA3NzQsImV4cCI6MTc0Mjc2NDM3NCwicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZXhhbXBsZS5jb20ifQ.JUojUPpikJSadpinzaH4iutiKDI1b78oxEExhzAVIICIXs_JgxH-1zDVfDp5W-dgoxlhu4ZSwKMwlafgDrbHCRclOwLIDNbLFXHIPr4pTntU4Xt8avJQczzvnIavT20AMSq1nn2HcfiIUQLgrtzQo5mh6FfCUc0iZzHRhBVfEoddUOGydAcWkWKS5jU7Wze3P6rlTl_nhLaScsEwzAwNEuk1eKMzPln7bcrV-MtJuUWvClCaxvAWMM_WcHUtw4llDgonzlvOr-JiNuMS-Vng7e1yMgcNkzPSZ9NSklxUO7KLWYVZZtzLUlbEeI0_HOV1Zkof08kcaABChTonbAh1eA",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"motif\": \"Consultation de suivi\",\r\n  \"dateRdv\": \"2024-01-15T09:00:00+00:00\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/rendez_vouses/2",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rendez_vouses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enregistrer le paiement d'une consultation",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjA3NzQsImV4cCI6MTc0Mjc2NDM3NCwicm9sZXMiOlsiUk9MRV9BU1NJU1RBTlQiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJhc3Npc3RhbnRAZXhhbXBsZS5jb20ifQ.JUojUPpikJSadpinzaH4iutiKDI1b78oxEExhzAVIICIXs_JgxH-1zDVfDp5W-dgoxlhu4ZSwKMwlafgDrbHCRclOwLIDNbLFXHIPr4pTntU4Xt8avJQczzvnIavT20AMSq1nn2HcfiIUQLgrtzQo5mh6FfCUc0iZzHRhBVfEoddUOGydAcWkWKS5jU7Wze3P6rlTl_nhLaScsEwzAwNEuk1eKMzPln7bcrV-MtJuUWvClCaxvAWMM_WcHUtw4llDgonzlvOr-JiNuMS-Vng7e1yMgcNkzPSZ9NSklxUO7KLWYVZZtzLUlbEeI0_HOV1Zkof08kcaABChTonbAh1eA",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"statut\": \"terminé\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/rendez_vouses/2",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rendez_vouses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lister le personnel",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjQ0OTksImV4cCI6MTc0Mjc2ODA5OSwicm9sZXMiOlsiUk9MRV9ESVJFQ1RPUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRpcmVjdG9yQGV4YW1wbGUuY29tIn0.MAKAkF4w70PspcJnUe4T8V6py2OhE2aXi79MMqNBRtipAfI9V-mZ2iEG8aU0k5XUBKUc05jp2JMzxDN_DqjwcRmGGzUd2IF9eWeHmEGCrmeC_d9D42c-rtoQH92Zpc0BDyPTW1ZY4GzhVdxsKS-zm_cqSEmL80_jxsOc6GWQXSgrcC42Mu50wqpPyGiSEWlnaKM-YJ9S8LcnaPB2qnZGIakzWh1Md1kPPOsn-TyO0el9kmLXjXZDMttInHuogT_9cb5XacWABTKtAoch5lEpMnO4QI8U-IMhyJSg9vQ0AvUs-M-ZFZixOv4TlUfwpQha8pD482JOVxLFGIPlhVUa2g",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"assistant2@example.com\",\r\n  \"plainPassword\": \"password\",\r\n  \"nom\": \"Assistant2\",\r\n  \"prenom\": \"Test\",\r\n  \"roles\": [\"ROLE_ASSISTANT\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/users",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Créer des vétérinaires et assistants",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjQ0OTksImV4cCI6MTc0Mjc2ODA5OSwicm9sZXMiOlsiUk9MRV9ESVJFQ1RPUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRpcmVjdG9yQGV4YW1wbGUuY29tIn0.MAKAkF4w70PspcJnUe4T8V6py2OhE2aXi79MMqNBRtipAfI9V-mZ2iEG8aU0k5XUBKUc05jp2JMzxDN_DqjwcRmGGzUd2IF9eWeHmEGCrmeC_d9D42c-rtoQH92Zpc0BDyPTW1ZY4GzhVdxsKS-zm_cqSEmL80_jxsOc6GWQXSgrcC42Mu50wqpPyGiSEWlnaKM-YJ9S8LcnaPB2qnZGIakzWh1Md1kPPOsn-TyO0el9kmLXjXZDMttInHuogT_9cb5XacWABTKtAoch5lEpMnO4QI8U-IMhyJSg9vQ0AvUs-M-ZFZixOv4TlUfwpQha8pD482JOVxLFGIPlhVUa2g",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"assistant3@example.com\",\r\n  \"plainPassword\": \"password\",\r\n  \"nom\": \"Assistant3\",\r\n  \"prenom\": \"Test\",\r\n  \"roles\": [\"ROLE_ASSISTANT\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/users",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Afficher en détail un membre du personnel",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjQ0OTksImV4cCI6MTc0Mjc2ODA5OSwicm9sZXMiOlsiUk9MRV9ESVJFQ1RPUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRpcmVjdG9yQGV4YW1wbGUuY29tIn0.MAKAkF4w70PspcJnUe4T8V6py2OhE2aXi79MMqNBRtipAfI9V-mZ2iEG8aU0k5XUBKUc05jp2JMzxDN_DqjwcRmGGzUd2IF9eWeHmEGCrmeC_d9D42c-rtoQH92Zpc0BDyPTW1ZY4GzhVdxsKS-zm_cqSEmL80_jxsOc6GWQXSgrcC42Mu50wqpPyGiSEWlnaKM-YJ9S8LcnaPB2qnZGIakzWh1Md1kPPOsn-TyO0el9kmLXjXZDMttInHuogT_9cb5XacWABTKtAoch5lEpMnO4QI8U-IMhyJSg9vQ0AvUs-M-ZFZixOv4TlUfwpQha8pD482JOVxLFGIPlhVUa2g",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"assistant2@example.com\",\r\n  \"plainPassword\": \"password\",\r\n  \"nom\": \"Assistant2\",\r\n  \"prenom\": \"Test\",\r\n  \"roles\": [\"ROLE_ASSISTANT\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/users/4",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mettre à jour les informations du personnel",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjQ0OTksImV4cCI6MTc0Mjc2ODA5OSwicm9sZXMiOlsiUk9MRV9ESVJFQ1RPUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRpcmVjdG9yQGV4YW1wbGUuY29tIn0.MAKAkF4w70PspcJnUe4T8V6py2OhE2aXi79MMqNBRtipAfI9V-mZ2iEG8aU0k5XUBKUc05jp2JMzxDN_DqjwcRmGGzUd2IF9eWeHmEGCrmeC_d9D42c-rtoQH92Zpc0BDyPTW1ZY4GzhVdxsKS-zm_cqSEmL80_jxsOc6GWQXSgrcC42Mu50wqpPyGiSEWlnaKM-YJ9S8LcnaPB2qnZGIakzWh1Md1kPPOsn-TyO0el9kmLXjXZDMttInHuogT_9cb5XacWABTKtAoch5lEpMnO4QI8U-IMhyJSg9vQ0AvUs-M-ZFZixOv4TlUfwpQha8pD482JOVxLFGIPlhVUa2g",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nom\": \"NomMisAJour\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/users/4",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Supprimer un membre du personnel",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDI3NjQ0OTksImV4cCI6MTc0Mjc2ODA5OSwicm9sZXMiOlsiUk9MRV9ESVJFQ1RPUiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRpcmVjdG9yQGV4YW1wbGUuY29tIn0.MAKAkF4w70PspcJnUe4T8V6py2OhE2aXi79MMqNBRtipAfI9V-mZ2iEG8aU0k5XUBKUc05jp2JMzxDN_DqjwcRmGGzUd2IF9eWeHmEGCrmeC_d9D42c-rtoQH92Zpc0BDyPTW1ZY4GzhVdxsKS-zm_cqSEmL80_jxsOc6GWQXSgrcC42Mu50wqpPyGiSEWlnaKM-YJ9S8LcnaPB2qnZGIakzWh1Md1kPPOsn-TyO0el9kmLXjXZDMttInHuogT_9cb5XacWABTKtAoch5lEpMnO4QI8U-IMhyJSg9vQ0AvUs-M-ZFZixOv4TlUfwpQha8pD482JOVxLFGIPlhVUa2g",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nom\": \"NomMisAJour\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:8000/api/users/8",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
