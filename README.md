@@ -22,7 +22,7 @@ API Symfony/API Platform gérant les rendez-vous, traitements, animaux, clients 
 ## INSTALLATION / CONFIGURATION
 
 ```bash
-git clone https://github.com/mon-repo/clinique-veterinaire-api.git
+git clone https://github.com/SpiderBanana/rendu-api.git
 cd clinique-veterinaire-api
 
 composer install
